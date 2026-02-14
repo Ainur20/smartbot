@@ -67,7 +67,7 @@ def show_profile(message):
 
     # Безопасный доступ к данным - показываем ВСЕ поля
     profile_text = f"""
-    👤 *Твой профиль:*
+    👤<b>Твой профиль:</b>
     ID: `{user_data.get('user_id', 'N/A')}`
     Username: @{user_data.get('username', 'отсутствует')}
     Имя: {user_data.get('first_name') or 'Не указано'}
@@ -75,15 +75,15 @@ def show_profile(message):
     Язык: {user_data.get('language_code') or 'не определён'}
     Бот: {'Да' if user_data.get('is_bot') else 'Нет'}
     
-    📅 *Даты:*
+    📅<b>Даты:</b>
     Зарегистрирован: {user_data.get('created_at', 'неизвестно')[:10]}
     Последний визит: {user_data.get('last_seen', 'неизвестно')[:19]}
     
-    ⚙️ *Настройки ИИ:*
+    ⚙️<b>Настройки ИИ:</b>
     Модель: `{user_data.get('ai_model', 'не настроена')}`
     Креативность: {user_data.get('temperature', 'не настроена')}"""
 
-    bot.reply_to(message, profile_text, parse_mode='Markdown')
+    bot.reply_to(message, profile_text, parse_mode='html')
 
 
 @bot.message_handler(commands=['stats'])
